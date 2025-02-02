@@ -3,6 +3,7 @@
 
  import { createSlice } from "@reduxjs/toolkit";
 import { taskList } from "../Data";
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -14,16 +15,20 @@ const taskSlice = createSlice({
     initialState:taskList,
     reducers:{
       addTask: (state, action) => {
-        state.push(action.payload)
+        console.log("add------>", state, action)
+
+        // state.push(action.payload)
+        const uuid = uuidv4()
+        console.log("uuidv4", uuid)
+        state.push({...action.payload, id:uuid})
       },
       editTask: (state, action) => {
-       
-        
-        state.tasks = state.tasks.map(task => (
-          task.name === action.payload.name ? action.payload : task
-         ))
-       
-
+        console.log("action.payload------>", action.payload)
+        const index = state.findIndex(task => task.id === action.payload.id);
+        console.log("2======>" , state[index])
+        if (index !== -1) {
+          state[index] = action.payload;
+        }
       },
       deleteTask: (state, action) => {
         const {name} = action.payload;

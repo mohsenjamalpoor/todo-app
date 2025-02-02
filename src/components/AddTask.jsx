@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { addTask } from "../features/taskSlice";
 import { useDispatch } from "react-redux";
 import MyModal from "./MyModal";
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 export default function AddTask() {
@@ -11,8 +13,9 @@ export default function AddTask() {
   const [date, setDate] = useState("")
   const [priority, setPriority] = useState("")
   const [status, setStatus] = useState("")
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [showModal, setShowModal] = useState(false)
+  
 
   const dispatch = useDispatch();
   // const tasks = useSelector((state) => state.tasks);
@@ -20,8 +23,11 @@ export default function AddTask() {
 
   const handleSubmit = (e) => {
   e.preventDefault();
+  // const myId = uuidv4()
+  // console.log("11111------>", myId)
   dispatch(addTask({name, priority, status,date}))
-  navigate('/')
+
+  
   }
   
   return (

@@ -16,8 +16,8 @@ function EditTask({ task }) {
   const dispatch = useDispatch();
   
   const handleEdit = () => {
-    dispatch(editTask({ name, priority, status, date }));
     setIsEditing(false);
+    dispatch(editTask({id:task.id, name, priority, status, date }));
   };
 
   return (
