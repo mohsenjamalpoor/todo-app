@@ -17,10 +17,11 @@ const taskSlice = createSlice({
         state.push(action.payload)
       },
       editTask: (state, action) => {
+       
         
         state.tasks = state.tasks.map(task => (
           task.name === action.payload.name ? action.payload : task
-        ))
+         ))
        
 
       },
