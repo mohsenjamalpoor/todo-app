@@ -14,7 +14,6 @@ function App() {
      <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/filters" element={<Filters/>}/>
-     
       <Route path="/editTask/:id" element={<EditTask/>}/>
       
      </Routes>

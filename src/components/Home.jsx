@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addTask, deleteTask } from "../features/taskSlice";
-import { FaTrash } from "react-icons/fa6";
-// import { MdEdit } from "react-icons/md";
+import { addTask } from "../features/taskSlice";
 import { IoAddSharp } from "react-icons/io5";
 import { CiFilter } from "react-icons/ci";
 import { BiListUl } from "react-icons/bi";
@@ -10,6 +8,7 @@ import { useState } from "react";
 import MyModal from "./MyModal";
 import { TablePagination } from "@mui/material";
 import EditTask from "./EditTask";
+import DeleteTask from "./DeleteTask";
 
 export default function Home() {
   const [page, setPage] = useState(2);
@@ -21,7 +20,6 @@ export default function Home() {
   const [date, setDate] = useState("");
   const [priority, setPriority] = useState("");
   const [status, setStatus] = useState("");
-  // const navigate = useNavigate();
 
   const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
@@ -33,10 +31,6 @@ export default function Home() {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-  };
-
-  const handelDelete = (name) => {
-    dispatch(deleteTask({ name }));
   };
 
   const handleSubmit = (e) => {
@@ -80,7 +74,7 @@ export default function Home() {
             </div>
             <div className="text-2xl font-bold hover:bg-indigo-400 rounded-full p-2 transition-all">
               <Link to="/filters">
-                {" "}
+               
                 <button>
                   <CiFilter />
                 </button>
@@ -161,12 +155,7 @@ export default function Home() {
                     <div className="flex justify-around items-center">
                       <EditTask task={task} />
 
-                      <button
-                        onClick={() => handelDelete(task.name)}
-                        className="cursor-pointer  text-lg text-gray-300 hover:bg-red-300 rounded-full p-2"
-                      >
-                        <FaTrash />
-                      </button>
+                      <DeleteTask task={task} />
                     </div>
                   </td>
                 </tr>

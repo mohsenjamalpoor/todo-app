@@ -89,7 +89,7 @@ function EditTask({ task }) {
             className="cursor-pointer text-4xl text-gray-300 hover:bg-green-300 rounded-full p-2"
             onClick={() => setIsEditing(true)}
           >
-            <MdEdit />
+            <MdEdit size={20} />
           </button>
         </>
       )}

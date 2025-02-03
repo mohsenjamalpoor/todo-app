@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from 'uuid';
 const taskSlice = createSlice({
     name:"tasks",
     initialState:taskList,
+    filter:"all",
     reducers:{
       addTask: (state, action) => {
         console.log("add------>", state, action)
@@ -39,10 +40,10 @@ const taskSlice = createSlice({
         
 
     },
-    setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
-    } 
+    filterTask: (state, action) => {
+      state.filter = action.payload;
+    }
   }
 })
-export const {addTask, editTask,deleteTask,setCurrentPage} = taskSlice.actions;
+export const {addTask, editTask,deleteTask, filterTask} = taskSlice.actions;
 export default taskSlice.reducer;
