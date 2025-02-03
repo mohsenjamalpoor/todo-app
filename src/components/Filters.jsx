@@ -1,22 +1,17 @@
-/* eslint-disable no-unused-vars */
+
 // import { useState } from "react";
 import { CiFilter } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterTask } from "../features/taskSlice";
 
-
 export default function Filters() {
- 
   const filters = useSelector((state) => state.filter);
-  
 
   const dispatch = useDispatch();
 
   const updateFilter = (e) => {
-   
     dispatch(filterTask(e.target.value));
-  
   };
   return (
     <>
@@ -45,10 +40,9 @@ export default function Filters() {
             </div>
             <div>
               <select
-              id="status"
+                id="status"
                 value={filters}
                 onChange={updateFilter}
-               
                 className="cursor-pointer w-40 border border-gray-400 rounded-md py-2 px-2 text-md font-semibold mt-6"
               >
                 <option value="All">All</option>
@@ -65,8 +59,6 @@ export default function Filters() {
           </div>
         </div>
       </div>
-
-     
     </>
   );
 }
